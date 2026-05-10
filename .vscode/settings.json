@@ -1,0 +1,28 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.sortMembers": "explicit"
+  },
+  "tailwindCSS.classAttributes": [
+       "style",
+       "class",
+       "className"
+   ],
+   "tailwindCSS.experimental.classRegex": [
+       "className\\s*=\\s*\"([^\"]*)\"",
+       "className\\s*=\\s*`([^`]*)`",
+       "tw`([^`]*)`",
+       [
+           "tw.style\\(([^)]*)\\)",
+           "'([^']*)'"
+       ]
+   ],
+   "tailwindCSS.includeLanguages": {
+       "javascript": "javascript",
+       "typescript": "typescript",
+       "javascriptreact": "javascript",
+       "typescriptreact": "typescript"
+   },
+ 
+}
