@@ -1,8 +1,9 @@
 import React from "react";
 import { SvgXml } from "react-native-svg";
+import { commonIcon } from "./common";
 import { favIcon } from "./list";
 
-const icons = { ...favIcon } as const;
+const icons = { ...favIcon, ...commonIcon } as const;
 
 type IconName = keyof typeof icons;
 

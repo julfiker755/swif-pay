@@ -1,42 +1,57 @@
-import { DarkTheme, ThemeProvider } from "@react-navigation/native";
+import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import "react-native-reanimated";
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import tw from "../components/ui/tailwind";
 
 export const unstable_settings = {
   initialRouteName: "index",
 };
 
-export default function RootLayout() {
-  const { top, bottom } = useSafeAreaInsets();
+const AppTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "#2564eb07",
+    card: "#2564eb07",
+    primary: "#2564eb07",
+    text: "#2564eb07",
+  },
+};
 
+export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <SafeAreaView
-        style={[tw`flex-1`, { paddingTop: top, paddingBottom: bottom }]}
-      >
-        <KeyboardProvider>
-          <ThemeProvider value={DarkTheme}>
-            <Stack
-              screenOptions={{
-                headerShown: false,
-                statusBarAnimation: "fade",
-                statusBarStyle: "light",
-              }}
-            >
-              <Stack.Screen name="index" />
-            </Stack>
-            <StatusBar style="auto" />
-          </ThemeProvider>
-        </KeyboardProvider>
-      </SafeAreaView>
+      <SafeAreaProvider>
+        <ThemeProvider value={AppTheme}>
+          <SafeAreaView style={tw`flex-1 bg-[#2564eb07]`}>
+            <KeyboardProvider>
+              {/* Status bar color */}
+              <StatusBar
+                style="dark"
+                backgroundColor="#2564eb07"
+                translucent={false}
+              />
+
+              <Stack
+                screenOptions={{
+                  headerShown: false,
+                  contentStyle: {
+                    backgroundColor: "#2564eb07",
+                  },
+                  statusBarStyle: "dark",
+                  statusBarBackgroundColor: "#2564eb07",
+                }}
+              >
+                <Stack.Screen name="index" />
+              </Stack>
+            </KeyboardProvider>
+          </SafeAreaView>
+        </ThemeProvider>
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 }

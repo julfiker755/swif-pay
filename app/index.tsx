@@ -1,47 +1,75 @@
-import { assets } from "@/assets";
-import { Button, Heading } from "@/components/ui";
+import { Heading } from "@/components/ui";
 import tw from "@/components/ui/tailwind";
-import { Link } from "expo-router";
-import { ImageBackground, StatusBar, Text, View } from "react-native";
+import FavIcon from "@/icon/favIcon";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function Index() {
   return (
     <>
-      <StatusBar barStyle="light-content" />
-      <ImageBackground
-        source={assets.bg}
-        resizeMode="cover"
-        style={tw`flex-1 justify-end`}
-      >
-        <View style={tw`absolute inset-0 bg-black/5`} />
-
-        <View style={tw`px-6 pb-10`}>
-          <Heading variant="h1" style={tw`text-center text-white`}>
-            Welcome to Mova
-          </Heading>
-
-          <Heading style={tw`text-center text-white mt-3`}>
-            The best movie streaming app of the century{"\n"}
-            to make your days great!
-          </Heading>
-
-          <View style={tw`flex-row justify-center mt-5`}>
-            {[0, 1, 2].map((_, idx) => (
-              <View
-                key={idx}
-                style={tw`w-2 h-2 rounded-full ${idx === 1 ? "bg-primary w-6" : "bg-gray-400"} mx-1`}
-              />
-            ))}
-          </View>
-          <Link style={tw`mt-5`} href={"/(auth)/login"} asChild>
-            <Button style={tw`rounded-full w-full h-12`}>
-              <Text style={tw`text-lg text-white font-semibold`}>
-                Get Started
-              </Text>
-            </Button>
-          </Link>
+      <View style={tw`flex-1`}>
+        <View style={tw`mx-auto mt-4`}>
+          <Image
+            source={require("../assets/image/logo.png")}
+            style={{ width: 170, height: 80, resizeMode: "contain" }}
+          />
         </View>
-      </ImageBackground>
+        <View style={tw`mx-auto`}>
+          <Image
+            source={require("../assets/image/login-img.png")}
+            style={{ width: 350, height: 300, resizeMode: "contain" }}
+          />
+        </View>
+        <View style={tw`px-6`}>
+          <Heading variant="h1" style={tw`text-center text-black`}>
+            Choose your role
+          </Heading>
+
+          <Heading style={tw`text-center text-black mt-3`}>
+            Book trusted services as a User, or list and manage your offerings
+            as a Service Provider on swifpay.
+          </Heading>
+          <View style={tw`gap-4 mt-6`}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={tw`bg-white rounded-3xl px-4 py-2 flex-row items-center justify-between`}
+            >
+              <View style={tw`flex-row items-center gap-2`}>
+                <View
+                  style={tw`size-14 rounded-full bg-primary items-center justify-center`}
+                >
+                  <FavIcon width={30} height={30} name="user1" />
+                </View>
+
+                <Text style={tw`text-black text-2xl font-medium`}>
+                  Service user
+                </Text>
+              </View>
+
+              <FavIcon name="arrowRight" />
+            </TouchableOpacity>
+
+            {/* Service Provider */}
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={tw`bg-white rounded-3xl px-4 py-2 flex-row items-center justify-between`}
+            >
+              <View style={tw`flex-row items-center gap-2`}>
+                <View
+                  style={tw`size-14 rounded-full bg-primary items-center justify-center`}
+                >
+                  <FavIcon width={30} height={30} name="provider" />
+                </View>
+
+                <Text style={tw`text-black text-2xl font-medium`}>
+                  Service provider
+                </Text>
+              </View>
+
+              <FavIcon name="arrowRight" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
     </>
   );
 }
