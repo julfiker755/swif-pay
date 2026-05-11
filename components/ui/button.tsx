@@ -12,7 +12,7 @@ const variants = {
 };
 
 const textColors = {
-  default: tw`text-foreground`,
+  default: tw`text-white`,
   destructive: tw`text-white`,
   success: tw`text-white`,
   secondary: tw`text-black`,
@@ -72,11 +72,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({
       {isLoading && <ActivityIndicator color="#fff" style={tw`mr-2`} />}
       {label ? (
         <Text
-          style={[
-            tw`font-medium text-foreground`,
-            textColors[variant],
-            textStyle,
-          ]}
+          style={[tw`font-medium text-white`, textColors[variant], textStyle]}
         >
           {label}
         </Text>

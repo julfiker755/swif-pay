@@ -35,7 +35,9 @@ export const FormInput = <T extends FormValues>({
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => inputRef.current?.focus()}
-        style={[tw`h-14 flex-row items-center px-4 rounded-xl border bg-input`]}
+        style={[
+          tw`h-14 flex-row items-center px-4 rounded-full border border-[#000000]/20`,
+        ]}
       >
         {icon && icon}
         <TextInput
@@ -46,7 +48,7 @@ export const FormInput = <T extends FormValues>({
           placeholder={placeholder}
           placeholderTextColor="#6b7281"
           secureTextEntry={secure && !show}
-          style={tw`flex-1 text-white text-base`}
+          style={tw`flex-1 text-black text-base`}
           {...props}
         />
         {secure && (

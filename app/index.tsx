@@ -1,9 +1,11 @@
 import { Heading } from "@/components/ui";
 import tw from "@/components/ui/tailwind";
 import FavIcon from "@/icon/favIcon";
+import { useRouter } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function Index() {
+  const router = useRouter();
   return (
     <>
       <View style={tw`flex-1`}>
@@ -32,6 +34,14 @@ export default function Index() {
             <TouchableOpacity
               activeOpacity={0.8}
               style={tw`bg-white rounded-3xl px-4 py-2 flex-row items-center justify-between`}
+              onPress={() => {
+                router.push({
+                  pathname: "/(auth)/login",
+                  params: {
+                    role: "user",
+                  },
+                });
+              }}
             >
               <View style={tw`flex-row items-center gap-2`}>
                 <View
@@ -52,6 +62,14 @@ export default function Index() {
             <TouchableOpacity
               activeOpacity={0.8}
               style={tw`bg-white rounded-3xl px-4 py-2 flex-row items-center justify-between`}
+              onPress={() => {
+                router.push({
+                  pathname: "/(auth)/login",
+                  params: {
+                    role: "provider",
+                  },
+                });
+              }}
             >
               <View style={tw`flex-row items-center gap-2`}>
                 <View
