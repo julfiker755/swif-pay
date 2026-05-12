@@ -46,7 +46,7 @@ export const OtpInput = <T,>({ formik, name }: OtpInputProps<T>) => {
             ref={(ref) => {
               if (ref) inputs.current[index] = ref;
             }}
-            style={tw`w-14 h-14 border-[1px] text-white rounded-xl text-center bg-input text-2xl`}
+            style={tw`w-14 h-14 border-[1px] border-[#000000]/20 text-black rounded-xl text-center bg-white text-2xl`}
             keyboardType="number-pad"
             maxLength={1}
             value={digit}

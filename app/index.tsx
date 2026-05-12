@@ -55,7 +55,7 @@ export default function Index() {
                 </Text>
               </View>
 
-              <FavIcon name="arrowRight" />
+              <FavIcon name="arrowTopRight" />
             </TouchableOpacity>
 
             {/* Service Provider */}
@@ -83,7 +83,7 @@ export default function Index() {
                 </Text>
               </View>
 
-              <FavIcon name="arrowRight" />
+              <FavIcon name="arrowTopRight" />
             </TouchableOpacity>
           </View>
         </View>

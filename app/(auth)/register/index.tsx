@@ -1,5 +1,5 @@
-import { assets } from "@/assets";
 import { getInit } from "@/components/lib";
+import { ArrowBtn } from "@/components/reuseable/icon-btn";
 import { register_sc } from "@/components/schema";
 import { Button, FormInput, Heading } from "@/components/ui";
 import tw from "@/components/ui/tailwind";
@@ -7,8 +7,8 @@ import FavIcon from "@/icon/favIcon";
 import { Link } from "expo-router";
 import { Formik } from "formik";
 import React from "react";
-import { Image, Platform, Text, View } from "react-native";
-import { KeyboardAvoidingView } from "react-native-keyboard-controller";
+import { Image, Text, View } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 
 export default function SignUp() {
   const handlesubmit = (values: any, { resetForm }: any) => {
@@ -19,20 +19,28 @@ export default function SignUp() {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={tw`flex-1`}
+    <KeyboardAwareScrollView
+      bottomOffset={20}
+      contentContainerStyle={tw`flex-grow px-2`}
     >
-      <View style={tw`flex-1 justify-center px-6`}>
-        <Image source={assets.logo} style={tw`w-20 h-20 mx-auto`} />
+      <ArrowBtn style={tw`mt-5`} />
+      <View style={tw`flex-1 justify-center mb-[70px]`}>
+        <View style={tw`mx-auto my-6`}>
+          <Image
+            source={require("@/assets/image/logo.png")}
+            style={{ width: 170, height: 80, resizeMode: "contain" }}
+          />
+        </View>
 
-        <Heading variant="h1" style={tw`mt-2 mb-1 mx-auto`}>
-          Movexa
-        </Heading>
+        <View>
+          <Heading variant="h1" style={tw`mb-1 text-3xl mx-auto text-primary`}>
+            User Sign Up
+          </Heading>
 
-        <Heading variant="p" style={tw`mx-auto mb-6`}>
-          Unlimited movies and series anytime
-        </Heading>
+          <Heading variant="p" style={tw`mx-auto mb-6 text-center`}>
+            Use your credentials to create a new account
+          </Heading>
+        </View>
 
         <Formik
           initialValues={getInit(register_sc)}
@@ -70,16 +78,22 @@ export default function SignUp() {
                   secure
                 />
                 <Button
-                  label="Sign up"
                   style={tw`rounded-full h-11`}
                   onPress={formik.handleSubmit}
-                />
+                >
+                  <View style={tw`flex-row items-center`}>
+                    <Text style={tw`text-white text-base`}> Continue</Text>
+                    <Text style={tw`ml-2`}>
+                      <FavIcon width={13} height={13} name="arrowRight" />
+                    </Text>
+                  </View>
+                </Button>
               </View>
             </>
           )}
         </Formik>
         <View style={tw`flex-row justify-center items-center mt-6`}>
-          <Text style={tw`text-base text-white mr-1`}>
+          <Text style={tw`text-base text-black mr-1`}>
             Already have an account ?
           </Text>
           <Link href={`/(auth)/login`} asChild>
@@ -87,6 +101,6 @@ export default function SignUp() {
           </Link>
         </View>
       </View>
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   );
 }

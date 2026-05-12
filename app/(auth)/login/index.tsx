@@ -26,11 +26,8 @@ export default function Login() {
 
   return (
     <KeyboardAwareScrollView
+      bottomOffset={20}
       contentContainerStyle={tw`flex-grow px-4`}
-      // extraScrollHeight={20}
-      keyboardShouldPersistTaps="handled"
-      showsVerticalScrollIndicator={false}
-      // enableAutomaticScroll={true}
     >
       <ArrowBtn
         style={tw`mt-5`}
