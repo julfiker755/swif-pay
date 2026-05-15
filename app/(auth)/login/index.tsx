@@ -17,7 +17,11 @@ export default function Login() {
   const handlesubmit = (values: any, { resetForm }: any) => {
     console.log("Login Attempt:", values);
 
-    router.push("/(tabs)/home");
+    // router.push("/(tabs)/home");
+    router.push({
+      pathname: "/(auth)/register/[slug]/index",
+      params: { slug: "bacon" },
+    });
     resetForm();
     // setTimeout(() => {
     //   resetForm();
